@@ -1,0 +1,531 @@
+<script>
+// 1-36 号元素，每行三个。中子数按自然界丰度最高的同位素计（质量数 - 质子数）
+const ROWS = [
+  {
+    "a": {
+      "z": 1,
+      "sym": "H",
+      "name": "氢",
+      "mass": "1.008",
+      "n": 0,
+      "cfg": "1s¹",
+      "cat": "nonmetal"
+    },
+    "b": {
+      "z": 2,
+      "sym": "He",
+      "name": "氦",
+      "mass": "4.003",
+      "n": 2,
+      "cfg": "1s²",
+      "cat": "noble"
+    },
+    "c": {
+      "z": 3,
+      "sym": "Li",
+      "name": "锂",
+      "mass": "6.94",
+      "n": 4,
+      "cfg": "2s¹",
+      "cat": "alkali"
+    }
+  },
+  {
+    "a": {
+      "z": 4,
+      "sym": "Be",
+      "name": "铍",
+      "mass": "9.012",
+      "n": 5,
+      "cfg": "2s²",
+      "cat": "alkaline"
+    },
+    "b": {
+      "z": 5,
+      "sym": "B",
+      "name": "硼",
+      "mass": "10.81",
+      "n": 6,
+      "cfg": "2s²2p¹",
+      "cat": "metalloid"
+    },
+    "c": {
+      "z": 6,
+      "sym": "C",
+      "name": "碳",
+      "mass": "12.01",
+      "n": 6,
+      "cfg": "2s²2p²",
+      "cat": "nonmetal"
+    }
+  },
+  {
+    "a": {
+      "z": 7,
+      "sym": "N",
+      "name": "氮",
+      "mass": "14.01",
+      "n": 7,
+      "cfg": "2s²2p³",
+      "cat": "nonmetal"
+    },
+    "b": {
+      "z": 8,
+      "sym": "O",
+      "name": "氧",
+      "mass": "16.00",
+      "n": 8,
+      "cfg": "2s²2p⁴",
+      "cat": "nonmetal"
+    },
+    "c": {
+      "z": 9,
+      "sym": "F",
+      "name": "氟",
+      "mass": "19.00",
+      "n": 10,
+      "cfg": "2s²2p⁵",
+      "cat": "halogen"
+    }
+  },
+  {
+    "a": {
+      "z": 10,
+      "sym": "Ne",
+      "name": "氖",
+      "mass": "20.18",
+      "n": 10,
+      "cfg": "2s²2p⁶",
+      "cat": "noble"
+    },
+    "b": {
+      "z": 11,
+      "sym": "Na",
+      "name": "钠",
+      "mass": "22.99",
+      "n": 12,
+      "cfg": "3s¹",
+      "cat": "alkali"
+    },
+    "c": {
+      "z": 12,
+      "sym": "Mg",
+      "name": "镁",
+      "mass": "24.31",
+      "n": 12,
+      "cfg": "3s²",
+      "cat": "alkaline"
+    }
+  },
+  {
+    "a": {
+      "z": 13,
+      "sym": "Al",
+      "name": "铝",
+      "mass": "26.98",
+      "n": 14,
+      "cfg": "3s²3p¹",
+      "cat": "post"
+    },
+    "b": {
+      "z": 14,
+      "sym": "Si",
+      "name": "硅",
+      "mass": "28.09",
+      "n": 14,
+      "cfg": "3s²3p²",
+      "cat": "metalloid"
+    },
+    "c": {
+      "z": 15,
+      "sym": "P",
+      "name": "磷",
+      "mass": "30.97",
+      "n": 16,
+      "cfg": "3s²3p³",
+      "cat": "nonmetal"
+    }
+  },
+  {
+    "a": {
+      "z": 16,
+      "sym": "S",
+      "name": "硫",
+      "mass": "32.06",
+      "n": 16,
+      "cfg": "3s²3p⁴",
+      "cat": "nonmetal"
+    },
+    "b": {
+      "z": 17,
+      "sym": "Cl",
+      "name": "氯",
+      "mass": "35.45",
+      "n": 18,
+      "cfg": "3s²3p⁵",
+      "cat": "halogen"
+    },
+    "c": {
+      "z": 18,
+      "sym": "Ar",
+      "name": "氩",
+      "mass": "39.95",
+      "n": 22,
+      "cfg": "3s²3p⁶",
+      "cat": "noble"
+    }
+  },
+  {
+    "a": {
+      "z": 19,
+      "sym": "K",
+      "name": "钾",
+      "mass": "39.10",
+      "n": 20,
+      "cfg": "4s¹",
+      "cat": "alkali"
+    },
+    "b": {
+      "z": 20,
+      "sym": "Ca",
+      "name": "钙",
+      "mass": "40.08",
+      "n": 20,
+      "cfg": "4s²",
+      "cat": "alkaline"
+    },
+    "c": {
+      "z": 21,
+      "sym": "Sc",
+      "name": "钪",
+      "mass": "44.96",
+      "n": 24,
+      "cfg": "3d¹4s²",
+      "cat": "transition"
+    }
+  },
+  {
+    "a": {
+      "z": 22,
+      "sym": "Ti",
+      "name": "钛",
+      "mass": "47.87",
+      "n": 26,
+      "cfg": "3d²4s²",
+      "cat": "transition"
+    },
+    "b": {
+      "z": 23,
+      "sym": "V",
+      "name": "钒",
+      "mass": "50.94",
+      "n": 28,
+      "cfg": "3d³4s²",
+      "cat": "transition"
+    },
+    "c": {
+      "z": 24,
+      "sym": "Cr",
+      "name": "铬",
+      "mass": "52.00",
+      "n": 28,
+      "cfg": "3d⁵4s¹",
+      "cat": "transition"
+    }
+  },
+  {
+    "a": {
+      "z": 25,
+      "sym": "Mn",
+      "name": "锰",
+      "mass": "54.94",
+      "n": 30,
+      "cfg": "3d⁵4s²",
+      "cat": "transition"
+    },
+    "b": {
+      "z": 26,
+      "sym": "Fe",
+      "name": "铁",
+      "mass": "55.85",
+      "n": 30,
+      "cfg": "3d⁶4s²",
+      "cat": "transition"
+    },
+    "c": {
+      "z": 27,
+      "sym": "Co",
+      "name": "钴",
+      "mass": "58.93",
+      "n": 32,
+      "cfg": "3d⁷4s²",
+      "cat": "transition"
+    }
+  },
+  {
+    "a": {
+      "z": 28,
+      "sym": "Ni",
+      "name": "镍",
+      "mass": "58.69",
+      "n": 30,
+      "cfg": "3d⁸4s²",
+      "cat": "transition"
+    },
+    "b": {
+      "z": 29,
+      "sym": "Cu",
+      "name": "铜",
+      "mass": "63.55",
+      "n": 34,
+      "cfg": "3d¹⁰4s¹",
+      "cat": "transition"
+    },
+    "c": {
+      "z": 30,
+      "sym": "Zn",
+      "name": "锌",
+      "mass": "65.38",
+      "n": 34,
+      "cfg": "3d¹⁰4s²",
+      "cat": "transition"
+    }
+  },
+  {
+    "a": {
+      "z": 31,
+      "sym": "Ga",
+      "name": "镓",
+      "mass": "69.72",
+      "n": 38,
+      "cfg": "4s²4p¹",
+      "cat": "post"
+    },
+    "b": {
+      "z": 32,
+      "sym": "Ge",
+      "name": "锗",
+      "mass": "72.63",
+      "n": 42,
+      "cfg": "4s²4p²",
+      "cat": "metalloid"
+    },
+    "c": {
+      "z": 33,
+      "sym": "As",
+      "name": "砷",
+      "mass": "74.92",
+      "n": 42,
+      "cfg": "4s²4p³",
+      "cat": "metalloid"
+    }
+  },
+  {
+    "a": {
+      "z": 34,
+      "sym": "Se",
+      "name": "硒",
+      "mass": "78.97",
+      "n": 46,
+      "cfg": "4s²4p⁴",
+      "cat": "nonmetal"
+    },
+    "b": {
+      "z": 35,
+      "sym": "Br",
+      "name": "溴",
+      "mass": "79.90",
+      "n": 44,
+      "cfg": "4s²4p⁵",
+      "cat": "halogen"
+    },
+    "c": {
+      "z": 36,
+      "sym": "Kr",
+      "name": "氪",
+      "mass": "83.80",
+      "n": 48,
+      "cfg": "4s²4p⁶",
+      "cat": "noble"
+    }
+  }
+]
+
+export default {
+  data: {
+    rows: [],
+  },
+
+  onInit() {
+    this.rows = ROWS
+  },
+}
+</script>
+
+<template>
+  <div class="page">
+    <div class="header">
+      <text class="title">元素周期表</text>
+      <text class="hint">1–36 · 上滑查看更多</text>
+    </div>
+
+    <list class="list" scroll-y="true">
+      <list-item class="row" type="row" for="{{rows}}">
+        <div class="card {{$item.a.cat}}">
+          <div class="c-head">
+            <text class="z">{{$item.a.z}}</text>
+            <text class="sym">{{$item.a.sym}}</text>
+          </div>
+          <div class="c-name">
+            <text class="name">{{$item.a.name}}</text>
+            <text class="mass">{{$item.a.mass}}</text>
+          </div>
+          <text class="pn">质子{{$item.a.z}}·中子{{$item.a.n}}</text>
+          <text class="cfg">{{$item.a.cfg}}</text>
+        </div>
+        <div class="card {{$item.b.cat}}">
+          <div class="c-head">
+            <text class="z">{{$item.b.z}}</text>
+            <text class="sym">{{$item.b.sym}}</text>
+          </div>
+          <div class="c-name">
+            <text class="name">{{$item.b.name}}</text>
+            <text class="mass">{{$item.b.mass}}</text>
+          </div>
+          <text class="pn">质子{{$item.b.z}}·中子{{$item.b.n}}</text>
+          <text class="cfg">{{$item.b.cfg}}</text>
+        </div>
+        <div class="card {{$item.c.cat}}">
+          <div class="c-head">
+            <text class="z">{{$item.c.z}}</text>
+            <text class="sym">{{$item.c.sym}}</text>
+          </div>
+          <div class="c-name">
+            <text class="name">{{$item.c.name}}</text>
+            <text class="mass">{{$item.c.mass}}</text>
+          </div>
+          <text class="pn">质子{{$item.c.z}}·中子{{$item.c.n}}</text>
+          <text class="cfg">{{$item.c.cfg}}</text>
+        </div>
+      </list-item>
+    </list>
+  </div>
+</template>
+
+<style>
+.page {
+  width: 390px;
+  height: 450px;
+  flex-direction: column;
+  background-color: #05090b;
+  padding-top: 44px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.header {
+  width: 342px;
+  height: 30px;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e8feff;
+}
+
+.hint {
+  font-size: 12px;
+  color: #5d838b;
+}
+
+.list {
+  width: 342px;
+  height: 352px;
+  margin-top: 10px;
+}
+
+.row {
+  width: 342px;
+  height: 122px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.card {
+  width: 108px;
+  height: 114px;
+  background-color: #0b1417;
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: #16333b;
+  border-left-width: 3px;
+  padding-top: 7px;
+  padding-bottom: 6px;
+  padding-left: 7px;
+  padding-right: 6px;
+  flex-direction: column;
+}
+
+.c-head {
+  width: 100%;
+  height: 26px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.z {
+  font-size: 13px;
+  color: #6f949b;
+}
+
+.sym {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.c-name {
+  width: 100%;
+  height: 17px;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 14px;
+  color: #d7f2f6;
+}
+
+.mass {
+  font-size: 11px;
+  color: #82a4ab;
+}
+
+.pn {
+  width: 100%;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #7fa3aa;
+}
+
+.cfg {
+  width: 100%;
+  margin-top: 3px;
+  font-size: 13px;
+  color: #a9e9f2;
+}
+.card.alkali { border-left-color: #67e8f9; }
+.card.alkaline { border-left-color: #22d3ee; }
+.card.transition { border-left-color: #38bdf8; }
+.card.post { border-left-color: #2dd4bf; }
+.card.metalloid { border-left-color: #7dd3fc; }
+.card.nonmetal { border-left-color: #5eead4; }
+.card.halogen { border-left-color: #06b6d4; }
+.card.noble { border-left-color: #a5f3fc; }</style>

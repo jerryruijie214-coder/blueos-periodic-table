@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>元素周期表 · 手表预览</title>
+<style>
+  html, body { margin:0; padding:0; background:#101619; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    font-family:-apple-system,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif; }
+  .bezel { width:452px; height:512px; border-radius:68px; background:#1e2629; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 18px 50px rgba(0,0,0,.55); }
+  .screen { width:390px; height:450px; border-radius:46px; overflow:hidden; background:#05090b; position:relative; }
+  .page { width:390px; height:450px; box-sizing:border-box; display:flex; flex-direction:column; background:#05090b; padding:44px 24px 0; }
+  .header { width:342px; height:30px; display:flex; align-items:flex-end; justify-content:space-between; }
+  .title { font-size:24px; font-weight:700; color:#e8feff; }
+  .hint { font-size:12px; color:#5d838b; }
+  .list { width:342px; height:352px; margin-top:10px; overflow-y:auto; scrollbar-width:none; }
+  .list::-webkit-scrollbar { display:none; }
+  .row { width:342px; height:122px; display:flex; align-items:flex-start; justify-content:space-between; }
+  .card { width:108px; height:114px; box-sizing:border-box; background:#0b1417; border-radius:12px; border:1px solid #16333b;
+    border-left:3px solid #1d3d45; padding:7px 6px 6px 7px; display:flex; flex-direction:column; }
+  .c-head { width:100%; height:26px; display:flex; align-items:center; justify-content:space-between; }
+  .z { font-size:13px; color:#6f949b; font-variant-numeric:tabular-nums; }
+  .sym { font-size:22px; font-weight:700; line-height:1; color:#ffffff; }
+  .c-name { width:100%; height:17px; display:flex; align-items:flex-end; justify-content:space-between; }
+  .name { font-size:14px; color:#d7f2f6; }
+  .mass { font-size:11px; color:#82a4ab; font-variant-numeric:tabular-nums; }
+  .pn { width:100%; margin-top:4px; font-size:12px; color:#7fa3aa; }
+  .cfg { width:100%; margin-top:3px; font-size:13px; color:#a9e9f2; }
+.card.alkali { border-left-color: #67e8f9; }
+.card.alkaline { border-left-color: #22d3ee; }
+.card.transition { border-left-color: #38bdf8; }
+.card.post { border-left-color: #2dd4bf; }
+.card.metalloid { border-left-color: #7dd3fc; }
+.card.nonmetal { border-left-color: #5eead4; }
+.card.halogen { border-left-color: #06b6d4; }
+.card.noble { border-left-color: #a5f3fc; }
+</style></head>
+<body><div class="bezel"><div class="screen"><div class="page">
+  <div class="header"><div class="title">元素周期表</div><div class="hint">1–36 · 上滑查看更多</div></div>
+  <div class="list" id="list">
+        <div class="row">
+          <div class="card nonmetal">
+            <div class="c-head"><span class="z">1</span><span class="sym">H</span></div>
+            <div class="c-name"><span class="name">氢</span><span class="mass">1.008</span></div>
+            <div class="pn">质子1·中子0</div>
+            <div class="cfg">1s¹</div>
+          </div>
+          <div class="card noble">
+            <div class="c-head"><span class="z">2</span><span class="sym">He</span></div>
+            <div class="c-name"><span class="name">氦</span><span class="mass">4.003</span></div>
+            <div class="pn">质子2·中子2</div>
+            <div class="cfg">1s²</div>
+          </div>
+          <div class="card alkali">
+            <div class="c-head"><span class="z">3</span><span class="sym">Li</span></div>
+            <div class="c-name"><span class="name">锂</span><span class="mass">6.94</span></div>
+            <div class="pn">质子3·中子4</div>
+            <div class="cfg">2s¹</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card alkaline">
+            <div class="c-head"><span class="z">4</span><span class="sym">Be</span></div>
+            <div class="c-name"><span class="name">铍</span><span class="mass">9.012</span></div>
+            <div class="pn">质子4·中子5</div>
+            <div class="cfg">2s²</div>
+          </div>
+          <div class="card metalloid">
+            <div class="c-head"><span class="z">5</span><span class="sym">B</span></div>
+            <div class="c-name"><span class="name">硼</span><span class="mass">10.81</span></div>
+            <div class="pn">质子5·中子6</div>
+            <div class="cfg">2s²2p¹</div>
+          </div>
+          <div class="card nonmetal">
+            <div class="c-head"><span class="z">6</span><span class="sym">C</span></div>
+            <div class="c-name"><span class="name">碳</span><span class="mass">12.01</span></div>
+            <div class="pn">质子6·中子6</div>
+            <div class="cfg">2s²2p²</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card nonmetal">
+            <div class="c-head"><span class="z">7</span><span class="sym">N</span></div>
+            <div class="c-name"><span class="name">氮</span><span class="mass">14.01</span></div>
+            <div class="pn">质子7·中子7</div>
+            <div class="cfg">2s²2p³</div>
+          </div>
+          <div class="card nonmetal">
+            <div class="c-head"><span class="z">8</span><span class="sym">O</span></div>
+            <div class="c-name"><span class="name">氧</span><span class="mass">16.00</span></div>
+            <div class="pn">质子8·中子8</div>
+            <div class="cfg">2s²2p⁴</div>
+          </div>
+          <div class="card halogen">
+            <div class="c-head"><span class="z">9</span><span class="sym">F</span></div>
+            <div class="c-name"><span class="name">氟</span><span class="mass">19.00</span></div>
+            <div class="pn">质子9·中子10</div>
+            <div class="cfg">2s²2p⁵</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card noble">
+            <div class="c-head"><span class="z">10</span><span class="sym">Ne</span></div>
+            <div class="c-name"><span class="name">氖</span><span class="mass">20.18</span></div>
+            <div class="pn">质子10·中子10</div>
+            <div class="cfg">2s²2p⁶</div>
+          </div>
+          <div class="card alkali">
+            <div class="c-head"><span class="z">11</span><span class="sym">Na</span></div>
+            <div class="c-name"><span class="name">钠</span><span class="mass">22.99</span></div>
+            <div class="pn">质子11·中子12</div>
+            <div class="cfg">3s¹</div>
+          </div>
+          <div class="card alkaline">
+            <div class="c-head"><span class="z">12</span><span class="sym">Mg</span></div>
+            <div class="c-name"><span class="name">镁</span><span class="mass">24.31</span></div>
+            <div class="pn">质子12·中子12</div>
+            <div class="cfg">3s²</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card post">
+            <div class="c-head"><span class="z">13</span><span class="sym">Al</span></div>
+            <div class="c-name"><span class="name">铝</span><span class="mass">26.98</span></div>
+            <div class="pn">质子13·中子14</div>
+            <div class="cfg">3s²3p¹</div>
+          </div>
+          <div class="card metalloid">
+            <div class="c-head"><span class="z">14</span><span class="sym">Si</span></div>
+            <div class="c-name"><span class="name">硅</span><span class="mass">28.09</span></div>
+            <div class="pn">质子14·中子14</div>
+            <div class="cfg">3s²3p²</div>
+          </div>
+          <div class="card nonmetal">
+            <div class="c-head"><span class="z">15</span><span class="sym">P</span></div>
+            <div class="c-name"><span class="name">磷</span><span class="mass">30.97</span></div>
+            <div class="pn">质子15·中子16</div>
+            <div class="cfg">3s²3p³</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card nonmetal">
+            <div class="c-head"><span class="z">16</span><span class="sym">S</span></div>
+            <div class="c-name"><span class="name">硫</span><span class="mass">32.06</span></div>
+            <div class="pn">质子16·中子16</div>
+            <div class="cfg">3s²3p⁴</div>
+          </div>
+          <div class="card halogen">
+            <div class="c-head"><span class="z">17</span><span class="sym">Cl</span></div>
+            <div class="c-name"><span class="name">氯</span><span class="mass">35.45</span></div>
+            <div class="pn">质子17·中子18</div>
+            <div class="cfg">3s²3p⁵</div>
+          </div>
+          <div class="card noble">
+            <div class="c-head"><span class="z">18</span><span class="sym">Ar</span></div>
+            <div class="c-name"><span class="name">氩</span><span class="mass">39.95</span></div>
+            <div class="pn">质子18·中子22</div>
+            <div class="cfg">3s²3p⁶</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card alkali">
+            <div class="c-head"><span class="z">19</span><span class="sym">K</span></div>
+            <div class="c-name"><span class="name">钾</span><span class="mass">39.10</span></div>
+            <div class="pn">质子19·中子20</div>
+            <div class="cfg">4s¹</div>
+          </div>
+          <div class="card alkaline">
+            <div class="c-head"><span class="z">20</span><span class="sym">Ca</span></div>
+            <div class="c-name"><span class="name">钙</span><span class="mass">40.08</span></div>
+            <div class="pn">质子20·中子20</div>
+            <div class="cfg">4s²</div>
+          </div>
+          <div class="card transition">
+            <div class="c-head"><span class="z">21</span><span class="sym">Sc</span></div>
+            <div class="c-name"><span class="name">钪</span><span class="mass">44.96</span></div>
+            <div class="pn">质子21·中子24</div>
+            <div class="cfg">3d¹4s²</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card transition">
+            <div class="c-head"><span class="z">22</span><span class="sym">Ti</span></div>
+            <div class="c-name"><span class="name">钛</span><span class="mass">47.87</span></div>
+            <div class="pn">质子22·中子26</div>
+            <div class="cfg">3d²4s²</div>
+          </div>
+          <div class="card transition">
+            <div class="c-head"><span class="z">23</span><span class="sym">V</span></div>
+            <div class="c-name"><span class="name">钒</span><span class="mass">50.94</span></div>
+            <div class="pn">质子23·中子28</div>
+            <div class="cfg">3d³4s²</div>
+          </div>
+          <div class="card transition">
+            <div class="c-head"><span class="z">24</span><span class="sym">Cr</span></div>
+            <div class="c-name"><span class="name">铬</span><span class="mass">52.00</span></div>
+            <div class="pn">质子24·中子28</div>
+            <div class="cfg">3d⁵4s¹</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card transition">
+            <div class="c-head"><span class="z">25</span><span class="sym">Mn</span></div>
+            <div class="c-name"><span class="name">锰</span><span class="mass">54.94</span></div>
+            <div class="pn">质子25·中子30</div>
+            <div class="cfg">3d⁵4s²</div>
+          </div>
+          <div class="card transition">
+            <div class="c-head"><span class="z">26</span><span class="sym">Fe</span></div>
+            <div class="c-name"><span class="name">铁</span><span class="mass">55.85</span></div>
+            <div class="pn">质子26·中子30</div>
+            <div class="cfg">3d⁶4s²</div>
+          </div>
+          <div class="card transition">
+            <div class="c-head"><span class="z">27</span><span class="sym">Co</span></div>
+            <div class="c-name"><span class="name">钴</span><span class="mass">58.93</span></div>
+            <div class="pn">质子27·中子32</div>
+            <div class="cfg">3d⁷4s²</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card transition">
+            <div class="c-head"><span class="z">28</span><span class="sym">Ni</span></div>
+            <div class="c-name"><span class="name">镍</span><span class="mass">58.69</span></div>
+            <div class="pn">质子28·中子30</div>
+            <div class="cfg">3d⁸4s²</div>
+          </div>
+          <div class="card transition">
+            <div class="c-head"><span class="z">29</span><span class="sym">Cu</span></div>
+            <div class="c-name"><span class="name">铜</span><span class="mass">63.55</span></div>
+            <div class="pn">质子29·中子34</div>
+            <div class="cfg">3d¹⁰4s¹</div>
+          </div>
+          <div class="card transition">
+            <div class="c-head"><span class="z">30</span><span class="sym">Zn</span></div>
+            <div class="c-name"><span class="name">锌</span><span class="mass">65.38</span></div>
+            <div class="pn">质子30·中子34</div>
+            <div class="cfg">3d¹⁰4s²</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card post">
+            <div class="c-head"><span class="z">31</span><span class="sym">Ga</span></div>
+            <div class="c-name"><span class="name">镓</span><span class="mass">69.72</span></div>
+            <div class="pn">质子31·中子38</div>
+            <div class="cfg">4s²4p¹</div>
+          </div>
+          <div class="card metalloid">
+            <div class="c-head"><span class="z">32</span><span class="sym">Ge</span></div>
+            <div class="c-name"><span class="name">锗</span><span class="mass">72.63</span></div>
+            <div class="pn">质子32·中子42</div>
+            <div class="cfg">4s²4p²</div>
+          </div>
+          <div class="card metalloid">
+            <div class="c-head"><span class="z">33</span><span class="sym">As</span></div>
+            <div class="c-name"><span class="name">砷</span><span class="mass">74.92</span></div>
+            <div class="pn">质子33·中子42</div>
+            <div class="cfg">4s²4p³</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card nonmetal">
+            <div class="c-head"><span class="z">34</span><span class="sym">Se</span></div>
+            <div class="c-name"><span class="name">硒</span><span class="mass">78.97</span></div>
+            <div class="pn">质子34·中子46</div>
+            <div class="cfg">4s²4p⁴</div>
+          </div>
+          <div class="card halogen">
+            <div class="c-head"><span class="z">35</span><span class="sym">Br</span></div>
+            <div class="c-name"><span class="name">溴</span><span class="mass">79.90</span></div>
+            <div class="pn">质子35·中子44</div>
+            <div class="cfg">4s²4p⁵</div>
+          </div>
+          <div class="card noble">
+            <div class="c-head"><span class="z">36</span><span class="sym">Kr</span></div>
+            <div class="c-name"><span class="name">氪</span><span class="mass">83.80</span></div>
+            <div class="pn">质子36·中子48</div>
+            <div class="cfg">4s²4p⁶</div>
+          </div>
+        </div>
+  </div>
+</div></div></div></body></html>

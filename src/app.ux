@@ -1,0 +1,15 @@
+<script>
+/**
+ * 全局入口。构建时会注入 manifest，不要删除下面的标记注释。
+ */
+export default {
+  onCreate() {
+    console.log('app onCreate')
+  },
+  onDestroy() {
+    console.log('app onDestroy')
+  },
+}
+</script>
+
+/**manifest**/
