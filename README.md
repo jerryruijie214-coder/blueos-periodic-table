@@ -14,11 +14,11 @@ v1.2.0 的一行三个 + 青色主题、v1.1.0 修掉的死机问题（模板 `f
 
 ## 界面
 
-| | |
+| 首屏 | 滑动中段 |
 |---|---|
-| 首屏 | `preview-1.png` |
-| 滑动中段 | `preview-m2.png` |
-| 可交互预览 | `preview.html`（浏览器打开，1:1 模拟 390×450 表盘） |
+| <img src="preview-1.png" width="240" alt="首屏：H、He、Li 三列卡片"> | <img src="preview-m2.png" width="240" alt="滑动中段：Fe、Co、Ni 等过渡金属"> |
+
+可交互预览：[`preview.html`](preview.html)（浏览器打开，1:1 模拟 390×450 表盘）
 
 ```
 17            Cl      ← 原子序数 / 元素符号（白色，族别看左侧色条）
